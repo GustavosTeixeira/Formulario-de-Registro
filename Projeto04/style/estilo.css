@@ -1,0 +1,171 @@
+:root{
+    --primary-color: rgba(109, 55, 235)
+}
+
+*,
+*:before
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+    font-weight: normal;
+}
+h1{
+    color: #fff;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background: linear-gradient(rgb(0, 0, 0), rgb(44, 44, 44)); 
+}
+
+/* GLOBAL STYLINGS */
+label{
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+input{
+    display: block;
+    width: 95%;
+    padding: 0.75rem;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 0.25rem;
+    background-color: transparent;
+}
+
+
+.width-50{
+    width: 40%;
+}
+
+.ml-auto{
+    margin-left: auto;
+}
+
+.text-center{
+    text-align: center;
+}
+
+/* PROGRESSBAR */
+.progressbar{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    margin: 2rem 0 3rem;
+} 
+
+.progressbar::before, .progress{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: #dcdcdc;
+    z-index: -1;
+}
+
+.progress{
+    background-color: var(--primary-color);
+    width: 0%;
+    transition: .5s;
+}
+
+.progress-step{
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.progress-step::before{
+    counter-increment: step;
+    content: counter(step);
+ 
+}
+
+.progress-step::after{
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    font-size: 0.85rem;
+    color: rgb(175, 175, 175);
+}
+
+.progress-step-active{
+    background-color: var(--primary-color);
+    color:#fff;
+}
+
+
+
+/* FORMULARIO */
+.form{
+    width: clamp(320px, 30%, 430px);
+    margin: 0 auto;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 0.35rem;
+    padding: 1.5rem;
+}
+
+.form-step{
+    display: none;
+    transform-origin: top;
+    animation: animate .5s;
+}
+.form-step-active{
+    display: block;
+}
+
+.input-group{
+    margin: 2rem 0;
+}
+
+@keyframes animate{
+    from {
+        transform: scale(1, 0);
+        opacity: 0;
+    }
+    to{
+        transform: scale (1, 1);
+        opacity: 1;
+    }
+}
+
+/* BOTÃO */
+.btn-group{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+
+
+.btn{
+    padding: 0.75rem;
+    display: block;
+    text-decoration: none;
+    background-color: var(--primary-color) ;
+    color: #fff;
+    text-align: center;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: .5s;
+    text-transform: uppercase ;
+}
+
+.btn:hover{
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+
+}
